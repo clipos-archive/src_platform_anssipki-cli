@@ -1,0 +1,193 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# Copyright © 2013-2018 ANSSI. All Rights Reserved.
+
+import sys
+import os
+import shlex
+import logging
+from cmd import Cmd
+import subprocess
+
+sys.prefix = sys.argv[0][:(sys.argv[0].rindex('/') - len("/bin"))]
+sys.path.append(sys.prefix + "/lib/python2.7/site-packages/")
+
+logging.basicConfig(level=logging.DEBUG)
+
+from libanssipkicli import _
+from libanssipki import anssipki
+from libanssipki.DBHelper import DBHelper
+from libanssipki.Conf import Conf
+from libanssipkicli.CLICreateCertificate import CLICreateCertificate
+from libanssipkicli.CLIListCertificates import CLIListCertificates
+from libanssipkicli.CLIShowCertificate import CLIShowCertificate
+from libanssipkicli.CLIExportCertificate import CLIExportCertificate
+from libanssipkicli.CLIFeedCard import CLIFeedCard
+from libanssipkicli.CLIAttachCA import CLIAttachCA
+from libanssipkicli.CLIRenewCertificate import CLIRenewCertificate
+from libanssipkicli.CLIShowLogs import CLIShowLogs
+from libanssipkicli.CLIRevoke import CLIRevoke, CLICreateCRL
+from libanssipkicli.CLIInfo import CLIInfo
+
+version = "ANSSIPKI v1.3.0 Angelus"
+
+class CLI:
+	action_handlers = [
+		CLIInfo,
+		CLICreateCertificate,
+		CLIListCertificates,
+		CLIShowCertificate,
+		CLIExportCertificate,
+		CLIAttachCA,
+		CLIRenewCertificate,
+		CLIRevoke,
+		CLICreateCRL,
+		CLIShowLogs,
+		CLIFeedCard
+	]
+
+	def __init__(self):
+		Conf.loadConf()
+
+		if "PKCS11PROXY_RPC_TIMEOUT" not in os.environ:
+			os.environ["PKCS11PROXY_RPC_TIMEOUT"] = "180"
+		# Configuration automatique du softhsm
+		if not bool(Conf.getValue("USE_P11PROX")):
+			softhsm2ConfFile = os.path.expanduser("~/.softhsm2.conf")
+			softhsm2TokensDir = os.path.expanduser("~/.softhsm2_tokens")
+			if 'SOFTHSM2_CONF' not in os.environ:
+				os.environ['SOFTHSM2_CONF'] =softhsm2ConfFile
+			if not os.path.exists(softhsm2ConfFile):
+				with open(softhsm2ConfFile, "w") as fp:
+					fp.write("directories.tokendir = %s\n" % softhsm2TokensDir)
+			if not os.path.exists(softhsm2TokensDir):
+				print "makedirs ", softhsm2TokensDir
+				os.makedirs(softhsm2TokensDir)
+				rv = subprocess.call(["softhsm2-util", "--init-token", "--slot", "0",
+									 "--module", Conf.getValue("PKCS11_HOST_MODULE"),
+									 "--label", Conf.getValue("PKCS11_HOST_LABEL"),
+									 "--pin", Conf.getValue("PKCS11_HOST_PIN"),
+									 "--so-pin", Conf.getValue("PKCS11_HOST_PIN")])
+				if rv != 0:
+					sys.stderr.write("Erreur à l'initialization de softhsm2\n")
+					sys.exit(1)
+
+		# Initialisation de la connection avec la ressource PKCS#11 principale
+		p11helper = anssipki.P11Helper.connect(Conf.getValue("PKCS11_HOST_MODULE"),
+											Conf.getValue("PKCS11_HOST_PIN"),
+											Conf.getValue("PKCS11_HOST_LABEL"),
+											Conf.getValue("PKCS11_HOST_SLOT") != None,
+											Conf.getValue("PKCS11_HOST_SLOT") if Conf.getValue("PKCS11_HOST_SLOT") else 0)
+		if not p11helper:
+			sys.stderr.write(_("HOST_HSM_LOAD_FAIL") + "\n")
+			sys.exit(1)
+		else:
+			anssipki.P11Helper.initInstance(p11helper)
+
+
+	def __del__(self):
+		anssipki.P11Helper.closeInstance()
+		DBHelper.close()
+
+	def do_action(self, args):
+		if len(args) == 1:
+			self.print_usage()
+		elif args[1] == "EOF":
+			sys.stdout.write("\n")
+			sys.exit(0)
+		else:
+			action_found = False
+			for action_handler in CLI.action_handlers:
+				if args[1] in action_handler.actions:
+					action_found = True
+					action_handler(args[1]).do(args[2:])
+			if not action_found:
+				raise Exception(_("CLI_INVALID_OPTION") % args[1])
+
+
+	def do_prompt_line(self, line):
+		if line == "":
+			return
+		try:
+			self.do_action([sys.argv[0]] + shlex.split(line.strip()));
+		except Exception, e:
+			sys.stderr.write("%s\n" % e)
+
+	def do_scenario(self):
+		if (len (sys.argv) != 3 or
+			sys.argv[2] == "-h" or
+			sys.argv[2] == "--help"):
+			print "%s" % (_("CLI_SCENARIO_USAGE"))
+		with open(sys.argv[2], "r") as f:
+			for line in f.readlines():
+				# On passe si la ligne est vide ou si la ligne
+				# commence par un '#' (commentaire)
+				if line.strip() == "" or line.startswith("#"):
+					continue
+				args = [sys.argv[0]] + shlex.split(line)
+				self.do_action(args)
+
+	def go_interactive(self):
+		if len (sys.argv) != 2:
+			print ("%s" % (_("CLI_INTERACTIVE_USAGE")))
+			return
+		cmd = Cmd()
+		cmd.prompt = "PKI>> "
+		cmd.default = lambda line : self.do_prompt_line(line)
+		cmd.emptyline = lambda : False
+		cmd.do_help = lambda arg : self.print_actions(arg)
+		cmd.cmdloop()
+
+	def print_actions(self, action = None):
+		"""
+		Affiche les actions disponibles
+		Si action est definis, la liste de ses parametres est affichee
+		"""
+		if action:
+			for action_handler in CLI.action_handlers:
+				if action in action_handler.actions:
+					# On appelle directement print_help au lieu de passer le parametre '-h'
+					# Celui ci fait quitter le programme, action non souhaitable en mode
+					# interactif
+					action_handler(action).parser.print_help()
+					return
+			raise Exception(_("CLI_INVALID_OPTION") % args[1])
+		else:
+			for action_handler in CLI.action_handlers:
+				action_handler.usage()
+
+	def print_usage(self):
+		print ("%s" % (_("CLI_USAGE")))
+		self.print_actions()
+
+	def print_scenario_usage(self):
+		print ("%s" % (_("CLI_SCENARIO_USAGE")))
+
+	def main(self):
+		if len(sys.argv) == 1:
+			self.print_usage()
+		elif sys.argv[1] == "--version" or sys.argv[1] == "-v":
+			print version
+		elif sys.argv[1] == "--help" or sys.argv[1] == "-h":
+			self.print_usage()
+		elif sys.argv[1] == "--interactive" or sys.argv[1] == "-i":
+			self.go_interactive()
+		elif sys.argv[1] == "--scenario" or sys.argv[1] == "-s":
+			self.do_scenario()
+		else:
+			self.do_action(sys.argv)
+
+if __name__ == '__main__':
+	cli = CLI()
+	try:
+		res = cli.main()
+	except Exception, e:
+		res = 1
+		if 'PRINT_BT' in os.environ:
+			logging.exception(e)
+		else:
+			print e
+	finally:
+		del cli
+	sys.exit(res)

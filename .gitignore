@@ -1,0 +1,11 @@
+*.pyc
+*.cxx
+*.so
+*.mo
+/anssipkicli/anssipki.py
+/tests/tmp/
+/doc
+/Makefile
+/CMakeFiles
+/build
+

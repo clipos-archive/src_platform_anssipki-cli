@@ -1,0 +1,46 @@
+# ChangeLog for app-crypt/anssipki-cli
+
+  12 Jan 2016; Yves-Alexis Perez <clipos@ssi.gouv.fr>
+  anssipki-cli-1.3.0.ebuild:
+  Add amd64 keyword.
+
+*anssipki-cli-1.3.0 (19 Nov 2015)
+
+  19 Nov 2015; Piotr Chmielnicki <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.3.0.ebuild, -anssipki-cli-1.2.2.ebuild:
+  Updated ANSSIPKI for SSM
+
+*anssipki-cli-1.2.2 (13 Feb 2015)
+
+  13 Feb 2015; Piotr Chmielnicki <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.2.2.ebuild, -anssipki-cli-1.2.1.ebuild:
+  Added support for $PKCS11PROXY_RPC_TIMEOUT
+
+*anssipki-cli-1.2.1 (12 Feb 2015)
+
+  12 Feb 2015; Piotr Chmielnicki <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.2.1.ebuild, -anssipki-cli-1.2.0.ebuild:
+  Fixed openssl path bug
+
+*anssipki-cli-1.2.0 (11 Feb 2015)
+
+  11 Feb 2015; Piotr Chmielnicki <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.2.0.ebuild, -anssipki-cli-1.1.0.ebuild:
+  Various changes including CLIP smartcards support
+
+*anssipki-cli-1.1.0 (31 Oct 2014)
+
+  31 Oct 2014; Baptiste Gourdin <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.1.0.ebuild, -anssipki-cli-1.0.0.ebuild:
+  Bump to 1.1.0
+
+  27 May 2014; Mickaël Salaün <clipos@ssi.gouv.fr>
+  anssipki-cli-1.0.0.ebuild:
+  Add SWIG dependency.
+  Add {DESCRIPTION,CATEGORY}_FR.
+
+*anssipki-cli-1.0.0-r1 (27 May 2014)
+
+  27 May 2014; Baptiste Gourdin <clipos@ssi.gouv.fr>
+  +anssipki-cli-1.0.0.ebuild:
+  Initial import.

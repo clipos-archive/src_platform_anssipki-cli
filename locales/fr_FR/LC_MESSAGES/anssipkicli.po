@@ -1,0 +1,261 @@
+msgid ""
+msgstr ""
+
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "CLI_USAGE"
+msgstr ""
+"anssipkicli <option>\n"
+"Options disponnibles :\n"
+"	-v, --version: affiche la version du programme et quitte\n"
+"	-h, --help: affiche cette aide et quitte\n"
+"	-i, --interactive: entre en mode interactif\n"
+"	-s, --scenario: exécute une liste d'action à partir d'un fichier\n"
+"anssipkicli <action> <paramètres de l'action>\n"
+"Actions disponibles :"
+
+msgid "HOST_HSM_LOAD_FAIL"
+msgstr "Erreur lors du chargement du HSM."
+
+msgid "CLI_SMARTCARD_OPTION_HELP"
+msgstr "Utilisation d'une carte à puce pour la génération du bi-clé."
+
+msgid "CLI_SCENARIO_USAGE"
+msgstr ""
+"usage: scenario [FILE]\n"
+"	FILE: effectue une liste d'actions depuis un fichier\n"
+"	Si aucun fichier n'est précisé, le mode interactif est lancé."
+
+msgid "CLI_INVALID_OPTION"
+msgstr "Action (%s) invalide"
+
+msgid "CLI_INVALID_KEY_ALGO"
+msgstr "Type de clé (%s) invalide"
+
+msgid "CLI_INVALID_SIGN_ALGO"
+msgstr "Algorithme de signature %s invalide"
+
+msgid "CLI_INVALID_KU"
+msgstr "Champ(s) KeyUsage (%s) invalide(s)"
+
+msgid "CLI_INVALID_EKU"
+msgstr "Champ(s) ExtendedKeyUsage (%s) invalide(s)"
+
+msgid "CLI_INVALID_SAN"
+msgstr "Champ(s) SAN (SubjectAltName) (%s) invalide(s)"
+
+msgid "CLI_CERT_POL_OID_REDEFINITION"
+msgstr "OID déjà défini"
+
+msgid "CLI_CREATE_CERT_TEMPLATE_HELP"
+msgstr "Nom d'un template à utiliser."
+
+msgid "CLI_NAME_OPTION_HELP"
+msgstr "Nom interne du certificat"
+
+msgid "CLI_DN_OPTION_HELP"
+msgstr "Sujet (Distinguished name)"
+
+msgid "CLI_VALIDITY_OPTION_HELP"
+msgstr ""
+"dd/mm/yyyy-dd/mm/yyyy : periode de validité entre deux dates\n"
+"+XdXmXy : période de validité pour une certaine periode à partir d'instant de génération\n"
+"dd/mm/yyyy+XdXmXy : période de validité pour une certaine periode à partir d'une date"
+
+msgid "CLI_SAN_OPTION_HELP"
+msgstr ""
+"Nom alternatif (SubjectAltName)\n"
+"email:<adresse Email>\n"
+"URI:<Unified Resource Locator>\n"
+"DNS:<nom DNS>\n"
+"IP:<adresse Ip>"
+
+msgid "CLI_KEYSIZE_OPTION_HELP"
+msgstr "Taille de clé à générer."
+
+msgid "CLI_KEYALGO_OPTION_HELP"
+msgstr "Type de clé à générer."
+
+msgid "CLI_SIGNALGO_OPTION_HELP"
+msgstr "Algorithme de signature"
+
+msgid "CLI_ISSUERDN_OPTION_HELP"
+msgstr "DN de l'AC émettrice à utiliser."
+
+msgid "CLI_SELFSIGNED_OPTION_HELP"
+msgstr "Génère un certificat auto-signé."
+
+msgid "CLI_KU_OPTION_HELP"
+msgstr ""
+"Combinaison d'une suite de KeyUsage séparés par des ':' \n"
+"(DigitalSignature:NonRepudiation:KeyEncipherment:DataEncipherment:\n"
+" KeyAgreement:KeyCertSign:CRLSign:EncipherOnly:DecipherOnly)"
+
+msgid "CLI_EKU_OPTION_HELP"
+msgstr ""
+"Combinaison d'une suite d'ExtendedKeyUsage séparés par des ':' \n"
+"(ServerAuth:ClientAuth:CodeSigning:EmailProtection:\n"
+" IPSecEndSystem:IPSecTunnel:IPSecUser:TimeStamping:OCSPSigning)"
+
+msgid "CLI_CERTPOL_OPTION_HELP"
+msgstr "Liste de politiques de certification au format <OID>:<CPS_URI> séparés par un |"
+
+msgid "CLI_OSSLEXT_OPTION_HELP"
+msgstr "Définition d'une extension v3 avec la syntaxe OpenSSL"
+
+msgid "CLI_EXPORTCERT_USAGE"
+msgstr "Exporte le certificat au format PEM."
+
+msgid "CLI_EXPORTP12_USAGE"
+msgstr "Exporte le certificat et sa clé privée dans un fichier PKCS#12 protégé par un mot de passe."
+
+msgid "CLI_EXPORTCSR_USAGE"
+msgstr "Génère une CSR à partir d'un certificat d'AC racine."
+
+msgid "CLI_FEEDCARD_USAGE"
+msgstr "Injecte une clé privée dans une carte à puce"
+
+msgid "CLI_EXPORT_USAGE"
+msgstr "Export des certificats (PEM) et clés privées de certificats finaux (format PKCS#12)"
+
+msgid "CLI_EXPORT_OUT_OPTION_HELP"
+msgstr "Nom de fichier où exporter (par défaut: <NOM_CERTIFICAT>.(p12,pem)"
+
+msgid "CLI_EXPORT_CHAIN_OPTION_HELP"
+msgstr "Ajoute les certificats des AC émettrices."
+
+msgid "CLI_EXPORT_PASSWORD_OPTION_HELP"
+msgstr "Mot de passe pour la génération du fichier PKCS#12"
+
+msgid "CLI_EXPORT_RANDPASS_OPTION_HELP"
+msgstr "Générer un mot de passe aléatoire pour l'export PKCS#12"
+
+msgid "CLI_PASSWORD"
+msgstr "mot de passe"
+
+msgid "CLI_PASSWORD_MISMATCH"
+msgstr "Les mots de passes ne correspondent pas !"
+
+msgid "CLI_DN_NOT_SET_ERROR"
+msgstr "Erreur: sujet (DN) non défini"
+
+msgid "CLI_TEMPLATE_NOT_FOUND_ERROR"
+msgstr "Erreur: le template %s n'a pas été trouvé"
+
+msgid "CLI_VALIDITY_NOT_SET_ERROR"
+msgstr "Erreur: Période de validité non définie."
+
+msgid "CLI_KU_NOT_SET_ERROR"
+msgstr "Erreur: keyusage non défini(s)"
+
+msgid "CLI_SA_NOT_SET_ERROR"
+msgstr "Erreur: algorithme de signature non défini"
+
+msgid "CLI_ISSUER_AND_SS_SET_ERROR"
+msgstr "Erreur: issuerdn ne doit pas être utilisé quand l'option selfsigned est présente."
+
+msgid "CLI_NO_ISSUER_SET_ERROR"
+msgstr "Erreur: aucun DN d'AC n'est défini."
+
+msgid "CLI_KS_NOT_SET_ERROR"
+msgstr "Erreur: Taille de clé à générer non définie."
+
+msgid "CLI_KA_NOT_SET_ERROR"
+msgstr "Erreur: Type de clé à générer non définie."
+
+msgid "CLI_CREATECERT_KCS_KU_SET_ERROR"
+msgstr "Erreur: Le keyusage KeyCertSign ne doit pas être utilisé avec l'action createcert"
+
+msgid "CLI_DN_CERT_NOT_FOUND_ERROR"
+msgstr "Aucun certificat ne correspond au DN %s"
+
+msgid "CLI_NAME_CERT_NOT_FOUND_ERROR"
+msgstr "Aucun certificat ne correspond au nom %s"
+
+msgid "CLI_DN_CERT_NOT_A_CA_ERROR"
+msgstr "Le certificate %s n'est pas un certificat d'AC"
+
+msgid "CLI_CERT_CREATION_ERROR"
+msgstr "Erreur lors de la création du certificat."
+
+msgid "CLI_DN_AND_NAME_SET_ERROR"
+msgstr "Option --name invalide : --dn déjà défini"
+
+msgid "CLI_NO_DN_NAME_SET_ERROR"
+msgstr "Options --dn et --name non définies"
+
+msgid "CLI_P12_NO_PASSWORD_SET"
+msgstr "Aucun mot de passe d'export n'est défini."
+
+msgid "CLI_LIST_NO_AC_FOUND"
+msgstr "Aucun certificat d'AC présent."
+
+msgid "CLI_RENEW_SELFSIGN_NOT_IMPLEMENTED"
+msgstr "Erreur: Renouvellement de certificat auto-signé non implémenté."
+
+msgid "CLI_CERT_DN_ALREADY_EXISTS"
+msgstr "Erreur: Un certificat avec le DN %s existe déjà."
+
+msgid "CLI_DN_CERT_NOT_SELFSIGNED_ERROR"
+msgstr "Le certificate %s n'est pas auto-signé."
+
+msgid "CLI_ATTACHCA_USAGE"
+msgstr "Importe un certificat d'AC créé par l'anssipki et signé par une AC tierce."
+
+msgid "CLI_IMPORT_NO_IN_ERROR"
+msgstr "Erreur: Aucun fichier d'entrée n'est spécifié."
+
+msgid "CLI_ATTACH_ERROR"
+msgstr "Erreur: mauvais certificat passé pour l'action d'attachement d'AC."
+
+msgid "CLI_CRL_WRITTEN_TO"
+msgstr "La crl été correctement généré : %s"
+
+msgid "CLI_CREATECRL_USAGE"
+msgstr "Création d'une liste de revocation pour un certificat d'AC"
+
+msgid "CLI_CREATECRL_OUT_OPTION_HELP"
+msgstr "Fichier de sortie pour la CRL"
+
+msgid "CLI_REVOKE_USAGE"
+msgstr "Révoque un certificat."
+
+msgid "CLI_CREATECA_USAGE"
+msgstr "Création d'une AC racine"
+
+msgid "CLI_CREATESUBCA_USAGE"
+msgstr "Création d'une sous-AC"
+
+msgid "CLI_CREATECERT_USAGE"
+msgstr "Création d'un certificat fils."
+
+msgid "CLI_RENEW_USAGE"
+msgstr "Renouvelle un certificat pour une nouvelle période de validité"
+
+msgid "CLI_SHOWLOGS_USAGE"
+msgstr "Affiche les journaux applicatifs"
+
+msgid "CLI_LIST_USAGE"
+msgstr "Affiche l'arbre des certificats générés."
+
+msgid "CLI_INFO_USAGE"
+msgstr "Affiche les informations internes au programme."
+
+msgid "CLI_AVAILABLE_TEMPLATES"
+msgstr "Templates disponibles :"
+
+msgid "CLI_AVAILABLE_SIGNALGO"
+msgstr "Algorithmes de signature disponibles :"
+
+msgid "CLI_REVOKE_REASON_OPTION_HELP"
+msgstr "Raison de révocation"
+
+msgid "expected one argument"
+msgstr "attend un argument"
+
+msgid "unrecognized arguments: %s"
+msgstr "options inconnues: %s"
+
+msgid "show this help message and exit"
+msgstr "affiche cette aide et quitte"

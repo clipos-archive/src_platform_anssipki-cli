@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "CLI_USAGE"
+msgstr ""
+"anssipkicli <option>\n"
+"Available options :\n"
+"	-v, --version: print the program version and exit\n"
+"	-h, --help: print this help and exit\n"
+"	-i, --interactive: enter interactive mode\n"
+"	-s, --scenario: execute a list of action from a file\n"
+"anssipkicli <action> <action parameters>\n"
+"Available actions :"
+
+msgid "HOST_HSM_LOAD_FAIL"
+msgstr "Host HSM load failed"
+
+msgid "CLI_SMARTCARD_OPTION_HELP"
+msgstr "Use smartcard for keypair generation."
+
+msgid "CLI_SCENARIO_USAGE"
+msgstr ""
+"usage: scenario [FILE]\n"
+"	Interactive mode.\n"
+"	if FILE is provided, action are read from it."
+
+msgid "CLI_INVALID_OPTION"
+msgstr "Invalid action %s"
+
+msgid "CLI_INVALID_KEY_ALGO"
+msgstr "Invalid keyAlgo %s"
+
+msgid "CLI_INVALID_SIGN_ALGO"
+msgstr "Invalid signAlgo %s"
+
+msgid "CLI_INVALID_KU"
+msgstr "Invalid KeyUsage %s"
+
+msgid "CLI_INVALID_EKU"
+msgstr "Invalid ExtendedKeyUsage %s"
+
+msgid "CLI_INVALID_SAN"
+msgstr "Invalid SAN type %s"
+
+msgid "CLI_CERT_POL_OID_REDEFINITION"
+msgstr "OID already defined"
+
+msgid "CLI_CREATE_CERT_TEMPLATE_HELP"
+msgstr "Template to use"
+
+msgid "CLI_NAME_OPTION_HELP"
+msgstr ""
+"Certificate internal name"
+
+msgid "CLI_DN_OPTION_HELP"
+msgstr ""
+"Subject distinguished name (\"C=FR,ST=France,CN=www.mywebsite.com\")"
+
+msgid "CLI_VALIDITY_OPTION_HELP"
+msgstr ""
+"dd/mm/yyyy-dd/mm/yyyy : validity between two dates\n"
+"+XdXmXy : validity from now for a given period\n"
+"(example +3y for 3 years, +4d3m for 4 days and 3 months)\n"
+"dd/mm/yyyy+XdXmXy : validity from a given date for a given period"
+
+msgid "CLI_SAN_OPTION_HELP"
+msgstr ""
+"Subject alternative name\n"
+"email:<Email address>\n"
+"URI:<Unified Resource Locator>\n"
+"DNS:<DNS name>\n"
+"IP:<Ip address>"
+
+msgid "CLI_KEYSIZE_OPTION_HELP"
+msgstr "Key pair size"
+
+msgid "CLI_KEYALGO_OPTION_HELP"
+msgstr "Key pair algorithm"
+
+msgid "CLI_SIGNALGO_OPTION_HELP"
+msgstr "Signature algorithm to use"
+
+msgid "CLI_ISSUERDN_OPTION_HELP"
+msgstr "Issuer CA subject distinguished name"
+
+msgid "CLI_SELFSIGNED_OPTION_HELP"
+msgstr "Create a selfsigned certificate"
+
+msgid "CLI_KU_OPTION_HELP"
+msgstr ""
+"Combination of key usage separated by ':' \n"
+"(DigitalSignature:NonRepudiation:KeyEncipherment:DataEncipherment:\n"
+" KeyAgreement:KeyCertSign:CRLSign:EncipherOnly:DecipherOnly)"
+
+msgid "CLI_EKU_OPTION_HELP"
+msgstr ""
+"(createcert action only)"
+"Combination of extended key usage separated by ':' \n"
+"(ServerAuth:ClientAuth:CodeSigning:EmailProtection:\n"
+" IPSecEndSystem:IPSecTunnel:IPSecUser:TimeStamping:OCSPSigning)"
+
+msgid "CLI_CERTPOL_OPTION_HELP"
+msgstr "List of certificate policies <OID>:<CPS_URI> separated by |"
+
+msgid "CLI_OSSLEXT_OPTION_HELP"
+msgstr "Generic extension definition (OpenSSL syntax)"
+
+msgid "CLI_EXPORTCERT_USAGE"
+msgstr "Write a certificate in PEM format."
+
+msgid "CLI_EXPORTP12_USAGE"
+msgstr "Export a certificate and its private keys protected by a password."
+
+msgid "CLI_EXPORTCSR_USAGE"
+msgstr "Create a CSR from a root CA certificate."
+
+msgid "CLI_FEEDCARD_USAGE"
+msgstr "Push a private key into a smartcard"
+
+msgid "CLI_EXPORT_OUT_OPTION_HELP"
+msgstr "Output file (default: <NAME_CERT>.(p12,pem)"
+
+msgid "CLI_EXPORT_CHAIN_OPTION_HELP"
+msgstr "Add issuers CA chain."
+
+msgid "CLI_EXPORT_PASSWORD_OPTION_HELP"
+msgstr "Password used for PKCS#12 export"
+
+msgid "CLI_EXPORT_RANDPASS_OPTION_HELP"
+msgstr "Generate and use a random password for PKCS#12 export"
+
+msgid "CLI_PASSWORD"
+msgstr "password"
+
+msgid "CLI_PASSWORD_MISMATCH"
+msgstr "Password missmatch!"
+
+msgid "CLI_TEMPLATE_NOT_FOUND_ERROR"
+msgstr "Error: template %s was not found"
+
+msgid "CLI_DN_NOT_SET_ERROR"
+msgstr "Error: dn is not defined"
+
+msgid "CLI_VALIDITY_NOT_SET_ERROR"
+msgstr "Error: validity is not defined"
+
+msgid "CLI_KU_NOT_SET_ERROR"
+msgstr "Error: keyusage is not defined"
+
+msgid "CLI_SA_NOT_SET_ERROR"
+msgstr "Error: signalgo is not defined"
+
+msgid "CLI_ISSUER_AND_SS_SET_ERROR"
+msgstr "Error: issuerdn option must not be used with selfsigned option set"
+
+msgid "CLI_NO_ISSUER_SET_ERROR"
+msgstr "Error: issuerdn is not defined (or selfsigned is not set)"
+
+msgid "CLI_KS_NOT_SET_ERROR"
+msgstr "Error: keysize is not defined"
+
+msgid "CLI_KA_NOT_SET_ERROR"
+msgstr "Error: keyalgo is not defined"
+
+msgid "CLI_CREATECERT_KCS_KU_SET_ERROR"
+msgstr "Error: KeyCertSign key usage must not be used with createcert action"
+
+msgid "CLI_DN_CERT_NOT_FOUND_ERROR"
+msgstr "Certificate with DN %s cannot be found"
+
+msgid "CLI_NAME_CERT_NOT_FOUND_ERROR"
+msgstr "Certificate with name %s cannot be found"
+
+msgid "CLI_DN_CERT_NOT_A_CA_ERROR"
+msgstr "Certificate with DN %s is not a CA Certificate"
+
+msgid "CLI_CERT_CREATION_ERROR"
+msgstr "Error, certificate not created"
+
+msgid "CLI_DN_AND_NAME_SET_ERROR"
+msgstr "Invalid option --name : --dn already specified"
+
+msgid "CLI_NO_DN_NAME_SET_ERROR"
+msgstr "No certificate specified. See options --dn and --name"
+
+msgid "CLI_P12_NO_PASSWORD_SET"
+msgstr "Password option must be set"
+
+msgid "CLI_LIST_NO_AC_FOUND"
+msgstr "No CA certificate found/."
+
+msgid "CLI_RENEW_SELFSIGN_NOT_IMPLEMENTED"
+msgstr "Error: selfsigned certificate renewal not implemented."
+
+msgid "CLI_CERT_DN_ALREADY_EXISTS"
+msgstr "Error: Certificat with DN (%s) already exists."
+
+msgid "CLI_DN_CERT_NOT_SELFSIGNED_ERROR"
+msgstr "Certificate %s is not self signed."
+
+msgid "CLI_ATTACHCA_USAGE"
+msgstr "Import a anssipki created certificate signed by a third party CA."
+
+msgid "CLI_IMPORT_NO_IN_ERROR"
+msgstr "Error: No input field specified."
+
+msgid "CLI_ATTACH_ERROR"
+msgstr "Error: bad certificate provided for CA attach action."
+
+msgid "CLI_CRL_WRITTEN_TO"
+msgstr "The CRL has been generated : %s"
+
+msgid "CLI_CREATECRL_USAGE"
+msgstr "Build a CRL for a specified CA"
+
+msgid "CLI_CREATECRL_OUT_OPTION_HELP"
+msgstr "CRL Output file"
+
+msgid "CLI_CREATECA_USAGE"
+msgstr "Create a root CA"
+
+msgid "CLI_CREATESUBCA_USAGE"
+msgstr "Create a sub CA"
+
+msgid "CLI_CREATECERT_USAGE"
+msgstr "Create a child certificate."
+
+msgid "CLI_REVOKE_USAGE"
+msgstr "Revoke a certificate."
+
+msgid "CLI_RENEW_USAGE"
+msgstr "Renew a certificate."
+
+msgid "CLI_SHOWLOGS_USAGE"
+msgstr "Show application logs"
+
+msgid "CLI_LIST_USAGE"
+msgstr "Print the certificates tree"
+
+msgid "CLI_INFO_USAGE"
+msgstr "Show internal informations"
+
+msgid "CLI_AVAILABLE_TEMPLATES"
+msgstr "Available templates :"
+
+msgid "CLI_AVAILABLE_SIGNALGO"
+msgstr "Available sign algorithms :"
+
+msgid "CLI_REVOKE_REASON_OPTION_HELP"
+msgstr "Revocation reason"
+
